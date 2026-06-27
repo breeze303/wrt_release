@@ -23,7 +23,7 @@ fi
 FEEDS_CONF="feeds.conf.default"
 GOLANG_REPO="https://github.com/sbwml/packages_lang_golang"
 GOLANG_BRANCH="26.x"
-THEME_SET="argon"
+THEME_SET="aurora"
 LAN_ADDR="192.168.1.1"
 
 SCRIPT_DIR=$(cd $(dirname $0) && pwd)
@@ -60,6 +60,7 @@ main() {
     change_cpuusage
     update_tcping
     add_ax6600_led
+    add_aurora
     set_custom_task
     apply_passwall_tweaks
     update_nss_pbuf_performance
