@@ -300,6 +300,25 @@ add_ax6600_led() {
     fi
 }
 
+add_aurora() {
+    local theme_dir="$BUILD_DIR/package/luci-theme-aurora"
+    local config_dir="$BUILD_DIR/package/luci-app-aurora-config"
+
+    echo "正在添加 luci-theme-aurora..."
+    rm -rf "$theme_dir"
+    if ! git clone --depth 1 "https://github.com/eamonxg/luci-theme-aurora.git" "$theme_dir"; then
+        echo "错误：克隆 luci-theme-aurora 失败" >&2
+        exit 1
+    fi
+
+    echo "正在添加 luci-app-aurora-config..."
+    rm -rf "$config_dir"
+    if ! git clone --depth 1 "https://github.com/eamonxg/luci-app-aurora-config.git" "$config_dir"; then
+        echo "错误：克隆 luci-app-aurora-config 失败" >&2
+        exit 1
+    fi
+}
+
 update_homeproxy() {
     local repo_url="https://github.com/immortalwrt/homeproxy.git"
     local target_dir="$(get_custom_feed_worktree_dir)/luci-app-homeproxy"
